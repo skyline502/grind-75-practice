@@ -12,8 +12,21 @@ Constraints:
 */
 
 //your code here...
+//use a hashmap, with number and its idx
+//iterate through array,
+//find complement for each num that = target
+//if complement in hash, return both idx
 const twoSum = (arr, target) => {
-
+  let indices = {};
+  for (let i = 0; i < arr.length; i++) {
+    let num = arr[i];
+    let complement = target - num;
+    if (complement in indices) {
+      return [indices[complement], i];
+    } else {
+      indices[num] = i;
+    }
+  }
 }
 
 //Examples:
