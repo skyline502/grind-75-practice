@@ -10,8 +10,18 @@ Every close bracket has a corresponding open bracket of the same type.
 */
 
 //your code here...
+//have a hash map with all closing brackets with open brackets as their values
+//use a stack
+//iterate through string
+//for each closing bracket we find,
+//check if top of the stack is its opening bracket
+//if it is not return false
 const isValid = (s) => {
-
+  let complement = {
+    ']': '[',
+    '}': '{',
+    ')': '('
+  }
 }
 
 //Examples:
