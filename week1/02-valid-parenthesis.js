@@ -13,6 +13,7 @@ Every close bracket has a corresponding open bracket of the same type.
 //have a hash map with all closing brackets with open brackets as their values
 //use a stack
 //iterate through string
+//if current character is opening bracket, push into stack
 //for each closing bracket we find,
 //check if top of the stack is its opening bracket
 //if it is not return false
@@ -22,6 +23,21 @@ const isValid = (s) => {
     '}': '{',
     ')': '('
   }
+
+  let stack = [];
+  for (let i = 0; i < s.length; i++) {
+    let char = s[i];
+    if (char in complement) {
+      if (complement[char] === stack[stack.length - 1]) {
+        stack.pop();
+      } else {
+        return false;
+      }
+    } else {
+      stack.push(char);
+    }
+  }
+  return stack.length === 0;
 }
 
 //Examples:
