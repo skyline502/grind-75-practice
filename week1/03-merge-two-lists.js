@@ -15,8 +15,32 @@ list2 = [1, 3, 4]
 
 output = [1, 1, 2, 3, 4, 4]
 */
+const mergeTwoLists = (list1, list2) => {
 
-//your code here...
+  let temp = new ListNode(); //temporary head;
+  let head = temp; //copy temporary head
+
+  while (list1 && list2) { //while list1 and list2 are not null
+      if (list1.val < list2.val) {
+          temp.next = list1;
+          list1 = list1.next;
+      } else {
+          temp.next = list2;
+          list2 = list2.next;
+      }
+      temp = temp.next;
+  }
+
+  //once we pop out of loop, one or both list1 & list2 are null, but we have to do the final next node assignment
+  if (list1) {
+      temp.next = list1
+  } else {
+      temp.next = list2
+  }
+
+  return head.next; //we finally return head.next because head.next is our real new head;
+
+};
 
 //edge cases
 /*
