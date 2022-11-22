@@ -17,6 +17,19 @@ output = [1, 1, 2, 3, 4, 4]
 */
 
 //your code here...
+
+//edge cases
+/*
+if one list is empty, return the other
+both lists are empty, return null?
+*/
+
+//have head variable and assign to min of two given heads
+//use two pointers
+//compare pointer values
+//reassign pointer next nodes accordingly
+//return head
+
 const mergeTwoLists = (list1, list2) => {
 
 }
