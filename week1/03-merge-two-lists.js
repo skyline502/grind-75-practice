@@ -54,10 +54,6 @@ both lists are empty, return null?
 //reassign pointer next nodes accordingly
 //return head
 
-const mergeTwoLists = (list1, list2) => {
-
-}
-
 
 //Examples:
 let list1 = [1, 2, 4]
