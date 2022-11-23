@@ -30,10 +30,10 @@ Explanation: In this case, no transactions are done and the max profit = 0.
 //return profit
 
 const maxProfit = prices => {
-  let min = prices[0]
-  let profit = 0;
+  let min = prices[0] //set the min price to first price
+  let profit = 0; //instantiate profit to 0
 
-  for (let i = 1; i < prices.length; i++) {
+  for (let i = 1; i < prices.length; i++) { //iterate through array starting at index 1
     if (prices[i] < min) {
       min = prices[i];
     }
