@@ -28,6 +28,12 @@ const search = (nums, tar) => {
   if (nums[nums.length - 1] < tar) {
     return -1;
   }
+
+  if (nums.length === 1) {
+    if (nums[0] === tar) return 0;
+    else return -1;
+  }
+
   let start = 0;
   let end = nums.length - 1;
 
