@@ -39,7 +39,8 @@ The bottom right 1, does not change because it isn't connected to our starting p
 */
 
 //your code here...
-const floodFill = (sr, sc, graph) => {
+const floodFill = (graph, sr, sc, color) => {
+  let start = graph[sr][sc];
 
 };
 
@@ -50,7 +51,7 @@ let graph = [
   [1,0,1]
 ]
 
-console.log(floodFill(1, 1, graph));
+console.log(floodFill(graph, 1, 1, 2));
 //output
 //[
 //   [2, 2, 2],
