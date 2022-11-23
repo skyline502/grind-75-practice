@@ -22,9 +22,26 @@ Explanation: In this case, no transactions are done and the max profit = 0.
 */
 
 //your code here...
+//min
+//profit
+//iterate through prices
+//if current price is < min, reassing min
+//calculate current price - min for profit and reassing accordingly
+//return profit
 
 const maxProfit = prices => {
+  let min = prices[0]
+  let profit = 0;
 
+  for (let i = 1; i < prices.length; i++) {
+    if (prices[i] < min) {
+      min = prices[i];
+    }
+    if (prices[i] - min > profit) {
+      profit = prices[i] - min;
+    }
+  }
+  return profit;
 };
 
 //Examples:
