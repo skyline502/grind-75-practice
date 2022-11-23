@@ -31,7 +31,32 @@ s and t consist of lowercase English letters.
 //return true or false depending if they are equal
 
 const isAnagram = (a, b) => {
+  if (a.length !== b.length) return false;
+  let aCount = {};
 
+  for (let char of a) {
+    if (!aCount[char]) {
+      aCount[char] = 1;
+    } else {
+      aCount[char] += 1;
+    }
+  }
+
+  for (let char of b) {
+    if (!aCount[char]) {
+      return false;
+    } else {
+      aCount[char] -= 1;
+    }
+  }
+
+  for (let count in aCount) {
+    if (aCount[count] !== 0) {
+      return false;
+    }
+  }
+
+  return true;
 };
 
 let a = 'rat';
