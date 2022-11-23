@@ -39,6 +39,10 @@ The bottom right 1, does not change because it isn't connected to our starting p
 */
 
 //your code here...
+//helper function to find neighbors of starting position;
+//iterate through neighbors array
+//change each neighbor to provided color
+//return input image;
 const floodFill = (graph, sr, sc, color) => {
   let start = graph[sr][sc];
 
