@@ -25,14 +25,17 @@ Since an empty string reads the same forward and backward, it is a palindrome.
 
 //your code here...
 
-//remove white space and  punctuation from string
+//remove white space and  punctuation from string, change all to lowercase
 //if string empty return true
+//have a punctuation object
 //start and end pointers
+//if pointer is a punctuation, increment/decrement pointer
 //compare both pointers
 //if different return false
 
 const isPalindrome = s => {
-
+  let converted = s.toLowerCase().split(' ').join('');
+  return converted;
 };
 
 
@@ -40,4 +43,4 @@ const isPalindrome = s => {
 //Examples:
 let s = "A man, a plan, a canal: Panama";
 
-console.log()
+console.log(isPalindrome(s))
