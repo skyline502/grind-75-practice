@@ -4,7 +4,7 @@ Given the root of a binary tree, invert the tree,
 and return its root.
 */
 
-class Node  {
+class Node {
   constructor(val) {
     this.val = val;
     this.left = null;
@@ -39,10 +39,20 @@ output = 4
 //copy the nodes into temp vars
 //reassign left to right, right to left of current node
 //return root at end of while loop
+//did not use this pseudo code, because recursion would be better for this
 
+//edge cases:
+//!root, return null
 
-const invertTree = root => {
+const invertTree = (root) => {
+  if (!root) return null;
 
+  //we copy node's left and right regardless if it is null;
+  let tempLeft = root.left;
+  let tempRight = root.right;
+  root.left = invertTree(tempRight); //we reassign left by plugging our copied right into our function
+  root.right = invertTree(tempLeft); //we reassign right by plugging our copied left into our function
+  return root; //we return root at the end;
 };
 
 //Examples:
