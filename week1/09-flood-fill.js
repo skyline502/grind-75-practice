@@ -44,9 +44,30 @@ The bottom right 1, does not change because it isn't connected to our starting p
 //change each neighbor to provided color
 //return input image;
 const floodFill = (graph, sr, sc, color) => {
-  let start = graph[sr][sc];
+  let startingColor = graph[sr][sc];
+  let visited = new Set();
+  let neighbors = [];
 
 };
+
+const explore = (graph, color, r, c, visited) => {
+  const rowInbounds = 0 <= r < graph.length;
+  const colInbounds = 0 <= c < graph[0].length;
+
+  if (graph[r][c] !== color) return false;
+  if (!rowInbounds || !colInbounds) return false;
+
+  let pos = r + ',' + c;
+  if (visited.has(pos)) return false;
+  visited.add(pos);
+
+  explore(graph, color, r + 1, c, visited);
+  explore(graph, color, r - 1, c, visited);
+  explore(graph, color, r, c + 1, visited);
+  explore(graph, color, r, c - 1, visited);
+
+  return true;
+}
 
 //Examples:
 let graph = [
