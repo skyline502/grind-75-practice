@@ -45,28 +45,30 @@ The bottom right 1, does not change because it isn't connected to our starting p
 //return input image;
 const floodFill = (graph, sr, sc, color) => {
   let startingColor = graph[sr][sc];
-  let visited = new Set();
-  let neighbors = [];
-
+  if (startingColor === color) return graph;
+  modify(graph, color, sr, sc, startingColor);
+  return graph;
 };
 
-const explore = (graph, color, r, c, visited) => {
-  const rowInbounds = 0 <= r < graph.length;
-  const colInbounds = 0 <= c < graph[0].length;
+const modify = (graph, color, r, c, startingColor) => {
+  const rowInbounds = 0 <= r && r < graph.length;
+  const colInbounds = 0 <= c && c < graph[0].length;
 
-  if (graph[r][c] !== color) return false;
-  if (!rowInbounds || !colInbounds) return false;
+  console.log('row: ', r, 'col: ', c)
 
-  let pos = r + ',' + c;
-  if (visited.has(pos)) return false;
-  visited.add(pos);
+  if (!rowInbounds || !colInbounds) {
+    return;
+  }
+  if (graph[r][c] !== startingColor) {
+    return;
+  }
 
-  explore(graph, color, r + 1, c, visited);
-  explore(graph, color, r - 1, c, visited);
-  explore(graph, color, r, c + 1, visited);
-  explore(graph, color, r, c - 1, visited);
+  graph[r][c] = color;
 
-  return true;
+  modify(graph, color, r + 1, c, startingColor);
+  modify(graph, color, r - 1, c, startingColor);
+  modify(graph, color, r, c + 1, startingColor);
+  modify(graph, color, r, c - 1, startingColor);
 }
 
 //Examples:
