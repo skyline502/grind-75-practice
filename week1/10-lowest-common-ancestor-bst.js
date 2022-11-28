@@ -56,8 +56,62 @@ p != q
 p and q will exist in the BST.
 */
 
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
+
 //your code here...
 //pojo to get all the parent nodes of each node
 //use queue and bfs to get all parent nodes
 //after getting all nodes
 //find common parent by looking in our completed parent pojo
+
+
+//Examples:
+
+// Example 1:
+
+//         6
+//      /    \
+//    2       8
+//   / \     / \
+//  0   4   7   9
+//     / \
+//    3   5
+
+// root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
+// Output: 6
+// Explanation: The LCA of nodes 2 and 8 is 6.
+
+let a = new Node(6);
+let b = new Node(2);
+let c = new Node(8);
+let d = new Node(0);
+let e = new Node(4);
+let f = new Node(7);
+let g = new Node(9);
+let h = new Node(3);
+let i = new Node(5);
+
+a.left = b;
+a.right = c;
+b.left = d;
+b.right = e;
+c.left = f;
+c.right = g;
+e.left = h;
+e.right = i;
+
+// console.log(a);
+// console.log(b);
+// console.log(c);
+// console.log(d);
+// console.log(e);
+// console.log(f);
+// console.log(g);
+// console.log(h);
+// console.log(i);
