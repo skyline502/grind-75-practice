@@ -57,3 +57,7 @@ p and q will exist in the BST.
 */
 
 //your code here...
+//pojo to get all the parent nodes of each node
+//use queue and bfs to get all parent nodes
+//after getting all nodes
+//find common parent by looking in our completed parent pojo
