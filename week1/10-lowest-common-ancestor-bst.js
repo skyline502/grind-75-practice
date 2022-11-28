@@ -70,6 +70,26 @@ class Node {
 //after getting all nodes
 //find common parent by looking in our completed parent pojo
 
+const lowestCommonAncestor = root => {
+  const ancestors = {};
+  let queue = [root];
+
+  while (queue.length) {
+    let current = queue.shift();
+
+    if (current.left) {
+      queue.push(current.left);
+      ancestors[current.left.val] = current.val;
+    }
+    if (current.right) {
+      queue.push(current.right);
+      ancestors[current.right.val] = current.val;
+    }
+  }
+
+  return ancestors;
+};
+
 
 //Examples:
 
@@ -115,3 +135,5 @@ e.right = i;
 // console.log(g);
 // console.log(h);
 // console.log(i);
+
+console.log(lowestCommonAncestor(a));
