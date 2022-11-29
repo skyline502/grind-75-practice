@@ -43,6 +43,10 @@ Explanation: The LCA of nodes 2 and 4 is 2, since a node can be a descendant of 
 
 Example 3:
 
+//    2
+//   /
+//  1
+
 Input: root = [2,1], p = 2, q = 1
 Output: 2
 
