@@ -46,8 +46,19 @@ The number of nodes in the tree is in the range [0, 5000].
 */
 
 const isBalanced = root => {
-
+  if (!root) {
+    return true;
+  }
+  let diff = Math.abs(height(root.left) - height(root.right));
+  return diff < 2 && isBalanced(root.left) && isBalanced(root.right);
 };
+
+const height = node => {
+  if (!node) {
+    return -1;
+  }
+  return 1 + Math.max(height(node.left), height(node.right));
+}
 
 class Node {
   constructor(val) {
