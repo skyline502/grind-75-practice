@@ -76,7 +76,11 @@ class Node {
 
 //found solution that makes sense
 
-//we reassign root, until both conditions fail and we break out of the loop, to return the last assigned root
+//steps:
+//compare current root val to both nodes
+//if both nodes are > current, reassign current to current.right
+//if both nodes are < current, reassign current to current.left
+//if above conditions fail, then return current
 const lowestCommonAncestor = (root, a, b) => {
   while (root) {
     if (root.val < a.val && root.val < b.val) { //since the tree is sorted, if the root.val < both nodes, then the ancestor is on the right branch
