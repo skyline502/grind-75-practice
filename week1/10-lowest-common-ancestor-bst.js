@@ -81,17 +81,36 @@ class Node {
 //if both nodes are > current, reassign current to current.right
 //if both nodes are < current, reassign current to current.left
 //if above conditions fail, then return current
-const lowestCommonAncestor = (root, a, b) => {
-  while (root) {
+
+// Example 1:
+
+//         6
+//      /    \
+//    2       8
+//   / \     / \
+//  0   4   7   9
+//     / \
+//    3   5
+
+// root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
+// Output: 6
+// Explanation: The LCA of nodes 2 and 8 is 6.
+
+const lowestCommonAncestor = (root, a, b) => { //6, 2, 8
+  while (root) { //6
     if (root.val < a.val && root.val < b.val) { //since the tree is sorted, if the root.val < both nodes, then the ancestor is on the right branch
+      // 6 < 2 && 8 ? false
       root = root.right;
     } else if (root.val > a.val && root.val > b.val) { //else it is on the left branch
+      // 6 > 2 && 8 ? false
       root = root.left;
     } else { //else it is the root itself;
+      //break
       break;
     }
   }
 
+  //return 6
   return root;
 };
 
