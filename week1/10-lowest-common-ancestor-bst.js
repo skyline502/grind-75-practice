@@ -70,20 +70,30 @@ class Node {
 //after getting all nodes
 //find common parent by looking in our completed parent pojo
 
-const lowestCommonAncestor = root => {
+//new approach, since it is a bst,
+//I only need to search one side of the tree, the one that is > both input nodes, unless the root is the parent
+
+const lowestCommonAncestor = (root, a, b) => {
   const ancestors = {};
   let queue = [root];
 
   while (queue.length) {
     let current = queue.shift();
+    console.log('does it reach here...')
 
     if (current.left) {
-      queue.push(current.left);
-      ancestors[current.left.val] = current.val;
+      console.log(current.left.val, 'what is left val')
+      console.log(current.left.val <= a, 'true?')
+      if (current.left.val <= a || current.left.val <= b) {
+        queue.push(current.left);
+        ancestors[current.left.val] = current.val;
+      }
     }
     if (current.right) {
-      queue.push(current.right);
-      ancestors[current.right.val] = current.val;
+      if (current.right.val <= a || current.right.val <= b) {
+        queue.push(current.right);
+        ancestors[current.right.val] = current.val;
+      }
     }
   }
 
@@ -136,4 +146,4 @@ e.right = i;
 // console.log(h);
 // console.log(i);
 
-console.log(lowestCommonAncestor(a));
+console.log(lowestCommonAncestor(a, 2, 8)); //6
