@@ -79,27 +79,23 @@ const lowestCommonAncestor = (root, a, b) => {
 
   while (queue.length) {
     let current = queue.shift();
-    console.log('does it reach here...')
 
     if (current.left) {
-      console.log(current.left.val, 'what is left val')
-      console.log(current.left.val <= a, 'true?')
-      if (current.left.val <= a || current.left.val <= b) {
-        queue.push(current.left);
-        ancestors[current.left.val] = current.val;
-      }
+      queue.push(current.left);
+      ancestors[current.left.val] = current.val;
     }
     if (current.right) {
-      if (current.right.val <= a || current.right.val <= b) {
-        queue.push(current.right);
-        ancestors[current.right.val] = current.val;
-      }
+      queue.push(current.right);
+      ancestors[current.right.val] = current.val;
     }
   }
 
-  return ancestors;
+  if (ancestors[a.val] === ancestors[b.val]) {
+    return ancestors[a.val];
+  } else {
+    return root.val;
+  }
 };
-
 
 //Examples:
 
@@ -146,4 +142,4 @@ e.right = i;
 // console.log(h);
 // console.log(i);
 
-console.log(lowestCommonAncestor(a, 2, 8)); //6
+console.log(lowestCommonAncestor(a, b, c)); //6
