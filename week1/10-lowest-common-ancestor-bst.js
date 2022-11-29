@@ -73,28 +73,22 @@ class Node {
 //new approach, since it is a bst,
 //I only need to search one side of the tree, the one that is > both input nodes, unless the root is the parent
 
+
+//found solution that makes sense
+
+//we reassign root, until both conditions fail and we break out of the loop, to return the last assigned root
 const lowestCommonAncestor = (root, a, b) => {
-  const ancestors = {};
-  let queue = [root];
-
-  while (queue.length) {
-    let current = queue.shift();
-
-    if (current.left) {
-      queue.push(current.left);
-      ancestors[current.left.val] = current.val;
-    }
-    if (current.right) {
-      queue.push(current.right);
-      ancestors[current.right.val] = current.val;
+  while (root) {
+    if (root.val < a.val && root.val < b.val) { //since the tree is sorted, if the root.val < both nodes, then the ancestor is on the right branch
+      root = root.right;
+    } else if (root.val > a.val && root.val > b.val) { //else it is on the left branch
+      root = root.left;
+    } else { //else it is the root itself;
+      break;
     }
   }
 
-  if (ancestors[a.val] === ancestors[b.val]) {
-    return ancestors[a.val];
-  } else {
-    return root.val;
-  }
+  return root;
 };
 
 //Examples:
