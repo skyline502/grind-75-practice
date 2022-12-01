@@ -49,14 +49,48 @@ class Node {
   }
 }
 
-const hasCycle = head => {
-  while (head) {
-    if (head.val === 'done') return true;
+// const hasCycle = head => {
+//   while (head) {
+//     if (head.val === 'done') return true;
 
-    head.val = 'done';
-    head= head.next;
+//     head.val = 'done';
+//     head= head.next;
+//   }
+
+//   return false;
+// };
+
+/*
+let a = new Node(3);
+let b = new Node(2);
+let c = new Node(0);
+let d = new Node(-4);
+
+a.next = b;
+b.next = c;
+c.next = d;
+d.next = b;
+
+a > b > c > d >-v
+    ^__________|
+
+*/
+
+//two pointer method:
+const hasCycle = head => { //a
+  let fast = head; //a
+  let slow = head; //a
+  let start = true;
+
+  while (fast && fast.next) {//a && b, c && d, b && c, d && b
+      if (fast === slow && !start) { //a === b ? true, start === true, c === b? false, b === c ? false, d === d ? true!
+          return true;
+      }
+
+      fast = fast.next.next; //c, b, d
+      slow = slow.next; //b, c, d
+      start = false;
   }
-
   return false;
 };
 
