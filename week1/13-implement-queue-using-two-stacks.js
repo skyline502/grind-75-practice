@@ -50,7 +50,8 @@ may take longer.
 
 //your code here...
 var MyQueue = function() {
-
+  this.stack1 = [];
+  this.stack2 = [];
 };
 
 /**
@@ -58,28 +59,35 @@ var MyQueue = function() {
  * @return {void}
  */
 MyQueue.prototype.push = function(x) {
-
+  this.stack1.push(x);
 };
 
 /**
  * @return {number}
  */
 MyQueue.prototype.pop = function() {
-
+  while (this.stack1.length !== 0) {
+    this.stack2.push(this.stack1.pop());
+  }
+  let pop = this.stack2.pop();
+  while (this.stack2.length !== 0) {
+    this.stack1.push(this.stack2.pop());
+  }
+  return pop;
 };
 
 /**
  * @return {number}
  */
 MyQueue.prototype.peek = function() {
-
+  return this.stack1[0];
 };
 
 /**
  * @return {boolean}
  */
 MyQueue.prototype.empty = function() {
-
+  return this.stack1.length === 0;
 };
 
 /**
