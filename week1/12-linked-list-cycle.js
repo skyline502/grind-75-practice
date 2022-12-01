@@ -39,6 +39,40 @@ pos is -1 or a valid index in the linked-list.
 
 */
 
-const hasCycle = head => {
+//reassign each node's value to 'done' since we know all the nodes are numbers
+//if we encounter a node with a value of 'done' that means we have a cycle!
 
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.next = null;
+  }
+}
+
+const hasCycle = head => {
+  while (head) {
+    if (head.val === 'done') return true;
+
+    head.val = 'done';
+    head= head.next;
+  }
+
+  return false;
 };
+
+//examples:
+let a = new Node(3);
+let b = new Node(2);
+let c = new Node(0);
+let d = new Node(-4);
+
+a.next = b;
+b.next = c;
+c.next = d;
+d.next = b;
+
+console.log(hasCycle(a)) //true;
+
+let e = new Node(1);
+
+console.log(hasCycle(e)) //false;
