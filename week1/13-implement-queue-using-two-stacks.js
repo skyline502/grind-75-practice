@@ -65,15 +65,15 @@ MyQueue.prototype.push = function(x) {
 /**
  * @return {number}
  */
-MyQueue.prototype.pop = function() {
+MyQueue.prototype.pop = function() { //stack1 = [1, 2, 3, 4], stack2 = [];
   while (this.stack1.length !== 0) {
-    this.stack2.push(this.stack1.pop());
+    this.stack2.push(this.stack1.pop());//stack1 = [], stack2 = [4, 3, 2, 1]
   }
-  let pop = this.stack2.pop();
-  while (this.stack2.length !== 0) {
-    this.stack1.push(this.stack2.pop());
+  let pop = this.stack2.pop(); //1
+  while (this.stack2.length !== 0) { //stack1 = [], stack2 = [4, 3, 2]
+    this.stack1.push(this.stack2.pop()); //stack1 = [2, 3, 4]
   }
-  return pop;
+  return pop; //1
 };
 
 /**
