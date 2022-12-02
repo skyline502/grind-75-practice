@@ -80,3 +80,7 @@ stack = []
 let s = "pbbcggttciiippooaais";
 console.log(removeDupes(s, 2));
 // Output: "ps"
+
+console.log(removeDupes('abcd', 2)) //abcd
+
+console.log(removeDupes("deeedbbcccbdaa", 3))//aa
