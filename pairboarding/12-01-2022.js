@@ -39,14 +39,14 @@
 // Input: s = "pbbcggttciiippooaais", k = 2
 // Output: "ps"
 
-// stack []
+// stack [] I will be using a stack to store the current letter of the string, and the number of occurences
 
-// for loop
-// push current letter into stack [letter, 1], if same as previous increment
-// if count of letter === k, pop it off the stack
+// for loop, using a for loop, I will iterate through the string
+// if the stack is empty or top of stack letter is different push current letter into stack [letter, 1], if same as previous increment count by 1
+// check if count of letter === k, if it is pop it off the stack
+
 // after loop
-
-// iterate through stack, and concatenate to result string, how many letters to result based on count
+// iterate through stack, and concatenate to result string, how many letters to result based on count using string.repeat
 // return result string
 
 const removeDupes = (s, k) => {
