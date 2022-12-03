@@ -30,10 +30,10 @@ const memoized = {}
 
 //we can use fibonacci to solve this because you can climb 1 or 2 stairs
 
-const fib =(n)=>{
-    if(n <= 2) return n;
+const fib =(n)=>{ //3
+    if(n <= 2) return n; //
     if(n in memoized) return memoized[n]
-    return memoized[n] = fib(n-1) + fib(n-2)
+    return memoized[n] = fib(n-1) + fib(n-2) //fib(2) + fib(1) => 2 + 1 => 3 (1 + 1 + 1, 1 + 2, 2 + 1)
 }
 
 const climbStairs = n => {
