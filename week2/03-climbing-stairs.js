@@ -28,6 +28,8 @@
 
 const memoized = {}
 
+//we can use fibonacci to solve this because you can climb 1 or 2 stairs
+
 const fib =(n)=>{
     if(n <= 2) return n;
     if(n in memoized) return memoized[n]
