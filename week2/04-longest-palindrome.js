@@ -10,7 +10,7 @@ Letters are case sensitive, for example, "Aa" is not considered a palindrome her
 //your code here...
 const longestPalindrome = s => {
   let count = {}
-  for (let char of s) {
+  for (let char of s) { //counts all the characters and adds them to hash map
     if (!count[char]) {
       count[char] = 1;
     } else {
@@ -18,17 +18,19 @@ const longestPalindrome = s => {
     }
   }
   let longest = 0;
-  let single = 0;
+  let odd = false; //we instantiate this to false
   for (let char in count) {
-    if (count[char] % 2 === 0) {
+    if (count[char] % 2 === 0) { //for all even counts we just add them to our longest
       longest += count[char]
-    } else if (count[char] % 2 !== 0) {
-      if (count[char] > single) {
-        single = count[char];
-      }
+    } else if (count[char] % 2 !== 0) { //if there are odd counts, we add them minus 1 and set odds to true;
+      longest += count[char] - 1;
+      odd = true;
     }
   }
-  return longest + single;
+  if (odd) { //if odd is true we return longest + 1;
+      return longest + 1;
+  }
+  return longest;
 }
 
 
