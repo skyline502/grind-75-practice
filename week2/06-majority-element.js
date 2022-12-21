@@ -23,5 +23,31 @@ n == nums.length
 
 */
 
+const majorityEl = arr => {
+  console.log(arr)
+  let count = {};
+
+  for (let el of arr) {
+    if (count[el]) {
+      count[el]++;
+    } else {
+      count[el] = 1;
+    }
+  }
+
+  for (let el in count) {
+    console.log(count[el])
+    if(count[el] > (arr.length/2)) {
+      return el;
+    }
+  }
+  
+  
+}
+
+console.log(majorityEl(["a", "a", "b", "b", "b"]))//b
+
+console.log(majorityEl([2,2,1,1,1,2,2]))
+
 
 
