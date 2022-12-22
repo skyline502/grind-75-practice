@@ -21,10 +21,34 @@ Each string does not contain leading zeros except for the zero itself.
 
 */
 
+// const addBinary = (a, b) => {
+//   let result = BigInt('0b'+a) + BigInt('0b'+b);
+//   //have to use BigInt because input numbers too large does not work with parseInt
+//   return result.toString(2);
+// }
+
+//string manipulation method:
 const addBinary = (a, b) => {
-  let result = BigInt('0b'+a) + BigInt('0b'+b);
-  //have to use BigInt because input numbers too large does not work with parseInt
-  return result.toString(2);
+  a = a.split('').reverse().join('');
+  b = a.split('').reverse().join('');
+
+  let length = a.length > b.length ? a.length: b.length;
+  let result = [];
+
+  for (let i = 0; i < length; i++) {
+    let num1 = Number(a[i] || 0);
+    let num2 = Number(b[i] || 0);
+    let current = Number(result[i] || 0) + num1 + num2;
+
+    if (current >= 2) {
+      result[i] = current % 2;
+      result.push(1);
+    } else {
+      result[i] = current;
+    }
+  }
+
+  return result.reverse().join('');
 }
 
 
