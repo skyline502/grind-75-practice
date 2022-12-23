@@ -50,7 +50,7 @@ const diameterOfBinaryTree = (root) => {
         /  \
       1 f   g 1  diameter = 2
 
-                4 a  diameter = 5
+                4 a  diameter = 3 + 2 = 5
               /   \
           3 b     c 2
            /     / \
