@@ -17,13 +17,26 @@ class Node {
   }
 }
 
-const btDiameter = root => {
-  if (!root) return 1;
-  let left = btDiameter(root.left)
-  let right = btDiameter(root.right)
+const diameterOfBinaryTree = (root) => {
+  let diameter = 0;
 
-  return Math.max(left,right) + 1;
-}
+  dfs(root);//helper to update the diameter for each level
+
+  return diameter;
+
+  function dfs(node) {
+      if (!node) return 0;
+
+      const left = dfs(node.left);
+      const right = dfs(node.right);
+
+      // update diameter at every node
+      diameter = Math.max(diameter, left + right);
+
+      // update the largest number of edge so far
+      return 1 + Math.max(left, right);
+  }
+};
 
 let a;
 let b;
@@ -50,4 +63,4 @@ b.right = a;
   e       a
 */
 
-console.log(btDiameter(c)); //4
+console.log(diameterOfBinaryTree(c)); //4
