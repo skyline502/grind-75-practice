@@ -32,15 +32,52 @@ class Node {
   }
 }
 
+// const middleNode = head => {
+//   let list = [];
+//   while(head) {
+//     list.push(head);
+//     head = head.next;
+//   }
+
+//   return list[Math.floor(list.length / 2)]
+// };
+
+//two pointer strategy:
+
 const middleNode = head => {
-  let list = [];
-  while(head) {
-    list.push(head);
-    head = head.next;
+  let slow = fast = head;
+
+  while (fast && fast.next) {
+    fast = fast.next.next;
+    slow = slow.next;
   }
 
-  return list[Math.floor(list.length / 2)]
-};
+  /*
+  1st loop
+
+    f
+
+    1 > 2 > 3 > 4 > 5
+
+    s
+
+  2nd
+            f
+    1 > 2 > 3 > 4 > 5
+        s
+
+
+  3rd
+                    f
+    1 > 2 > 3 > 4 > 5
+            s
+
+  out of loop
+  return s = 3
+  */
+
+  return slow;
+}
 
 //Examples:
 let a = new Node(1);
