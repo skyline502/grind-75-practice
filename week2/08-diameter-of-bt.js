@@ -38,6 +38,32 @@ const diameterOfBinaryTree = (root) => {
   }
 };
 
+
+//example:
+
+/*
+               4 a diameter = 4
+              /   \
+          3 b     c 1
+           /
+        2  d
+        /  \
+      1 f   g 1  diameter = 2
+
+                4 a  diameter = 5
+              /   \
+          3 b     c 2
+           /     / \
+        2  d  1 h   i 1
+        /  \
+      1 f   g 1          diameter = 2
+
+
+*/
+
+
+
+
 let a;
 let b;
 let c;
