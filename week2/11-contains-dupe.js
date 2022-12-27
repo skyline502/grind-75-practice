@@ -4,6 +4,19 @@
 
 
 const containsDuplicate = nums => {
+  //use a set
+  //compare length of nums with size of set
+  //return true if size is different, false if not
+
+  let dupes = new Set();
+
+  for (let num of nums) {
+    if (!dupes.has(num)) {
+      dupes.add(num);
+    }
+  }
+
+  return dupes.size !== nums.length;
 
 }
 
