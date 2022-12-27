@@ -21,7 +21,12 @@ Output: 23
 
  */
 
+//video explanation on solution: https://youtu.be/Id_hZTV7_IA
+
 const maxSubArray = nums => {
+  let max = nums[0];
+  let subArray = [nums[0]];
+
 
 }
 
