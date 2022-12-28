@@ -24,10 +24,12 @@ Output: 23
 //video explanation on solution: https://youtu.be/Id_hZTV7_IA
 
 const maxSubArray = nums => {
-  let max = nums[0];
-  let currentMax = nums[0];
+  let max = nums[0]; //the max
+
+  let currentMax = nums[0];//current max
 
   for (let i = 1; i < nums.length; i++) {
+//we reassign max and current max accordingly 
     currentMax = Math.max(nums[i], nums[i] + currentMax);
     max = Math.max(currentMax, max);
   }
