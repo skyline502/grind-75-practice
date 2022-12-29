@@ -1,8 +1,11 @@
 /*
 
-You are given an array of non-overlapping intervals intervals where intervals[i] = [starti, endi] represent the start and the end of the ith interval and intervals is sorted in ascending order by starti. You are also given an interval newInterval = [start, end] that represents the start and end of another interval.
+You are given an array of non-overlapping intervals intervals where intervals[i] = [starti, endi] represent the start and the end of the
+ith interval and intervals is sorted in ascending order by starti. You are also given an interval newInterval = [start, end] that represents
+the start and end of another interval.
 
-Insert newInterval into intervals such that intervals is still sorted in ascending order by starti and intervals still does not have any overlapping intervals (merge overlapping intervals if necessary).
+Insert newInterval into intervals such that intervals is still sorted in ascending order by starti and intervals still does not have any overlapping intervals
+(merge overlapping intervals if necessary).
 
 Return intervals after the insertion.
 
@@ -33,9 +36,36 @@ newInterval.length == 2
 //else push the current interval into our output array
 //return output after loop
 
-const insertInterval = (intervals, newInt) => {
+var insertInterval = function(intervals, newInterval) {
+  const result = []
 
-}
+  /*
+  Three cases:
+  1 - If we have already added newInterval or the current interval ends before the new one starts
+  2 - If newInterval ends before the current one starts
+  3 - If there is an overlap that requires a merge
+  */
+
+  for (const [start, end] of intervals) {
+      if (!newInterval || end < newInterval[0]) {
+          result.push([start, end])
+      } else if (newInterval[1] < start) {
+          result.push(newInterval)
+          newInterval = null
+          result.push([start, end])
+      } else {
+          newInterval[0] = Math.min(newInterval[0], start)
+          newInterval[1] = Math.max(newInterval[1], end)
+      }
+  }
+
+  // If newInterval has not been added it means it must be the last one
+  if (newInterval) {
+      result.push(newInterval)
+  }
+
+  return result
+};
 
 //Examples:
 let intervals;
