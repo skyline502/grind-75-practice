@@ -15,7 +15,7 @@ Example 2:
 Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]
 Output: [[1,2],[3,10],[12,16]]
 Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
- 
+
 
 Constraints:
 
@@ -27,3 +27,28 @@ newInterval.length == 2
 0 <= start <= end <= 105
 
 */
+
+const insertInterval = (intervals, newInt) => {
+
+}
+
+//Examples:
+let intervals;
+let newInterval;
+
+intervals = [[1,3],[6,9]];
+newInterval = [2,5];
+
+console.log(insertInterval(intervals, newInterval))//=> [[1,5],[6,9]]
+/*Explanation:
+Because the start in [2,5] is a part of the original [1,3] interval, we combine the two into [1,5].
+So the new Intervals are [[1,5],[6,9]]
+
+*/
+
+intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]];
+newInterval = [4,8];
+
+console.log(insertInterval(intervals, newInterval));
+// Output: [[1,2],[3,10],[12,16]]
+// Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
