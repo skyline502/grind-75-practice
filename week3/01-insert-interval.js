@@ -28,6 +28,11 @@ newInterval.length == 2
 
 */
 
+//pseudo code
+//check each interval in our intervals array, and if the start or the end is in the interval, combine the two together, and reassign the newInt to the combo
+//else push the current interval into our output array
+//return output after loop
+
 const insertInterval = (intervals, newInt) => {
 
 }
