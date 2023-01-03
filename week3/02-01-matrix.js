@@ -30,3 +30,6 @@ There is at least one 0 in mat.
 
 */
 
+const findZeros = (matrix, r, c) => {
+
+}
