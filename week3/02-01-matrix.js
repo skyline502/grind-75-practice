@@ -55,6 +55,7 @@ var updateMatrix = function (mat) {
   console.log(result, "result", "queue:", queue)
 
     while (queue.length) {
+//find undefined values by using known 0 and incrementing based on distance
        const [x, y] = queue.shift();
     // if condition satisfy , add new index in queue and update its value in result matrix
         if (x - 1 >= 0 && result[x - 1][y] === undefined)
