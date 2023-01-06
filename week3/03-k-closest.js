@@ -21,26 +21,45 @@ const closestKPoints = (arr, k) => {
       points[length].push(point)
     }
   }
-  distances.sort()
+  distances.sort((a, b) => a - b);
+
+  console.log(distances, 'distances')
+  console.log(points, 'points')
   for (let i = 0; i < k; i++) {
     let p = points[distances[i]];
-    if (p.length === 1) {
+    if (p.length > 1 && results.length < k) {
       results.push(p[0]);
-    } else if ((i + 1) < k) {
-      results.push(p[0])
-      results.push(p[1])
+      results.push(p[1]);
+    } else if (results.length < k) {
+      results.push(p[0]);
     }
-    console.log(p[0])
   }
   return results;
 }
 
-let input = [[1,3], [-2,2]]
-let k = 1
+let input;
+let k;
+// let input = [[1,3], [-2,2]]
+// let k = 1
 
-console.log(closestKPoints(input,k))
+// console.log(closestKPoints(input,k))
 
-input = [[3,3],[5,-1],[-2,4]]
-k = 2
+// input = [[3,3],[5,-1],[-2,4]]
+// k = 2
 
-console.log(closestKPoints(input,k))
+// console.log(closestKPoints(input,k))
+
+// input = [[6,10],[-3,3],[-2,5],[0,2]];
+// k = 3;
+
+// console.log(closestKPoints(input, k));
+
+// input =  [[9997,9997],[9996,9998]];
+// k = 1;
+
+// console.log(closestKPoints(input, k));
+
+input = [[0,1],[1,0]]
+k = 2;
+
+console.log(closestKPoints(input, k));
