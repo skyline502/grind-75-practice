@@ -8,31 +8,17 @@ You may return the answer in any order. The answer is guaranteed to be unique (e
 
 const closestKPoints = (arr, k) => {
   let distances = []
-  let points = {}
   let results = []
 
   for (let point of arr) {
     let length = Math.sqrt(Math.pow(point[0],2) + Math.pow(point[1], 2)).toFixed(2);
-    distances.push(length);
-
-    if(!points[length]) {
-      points[length] = [point]
-    } else {
-      points[length].push(point)
-    }
+    distances.push({distance: length, coord: point});
   }
-  distances.sort((a, b) => a - b);
+  distances.sort((a, b) => a.distance - b.distance);
 
-  console.log(distances, 'distances')
-  console.log(points, 'points')
+  console.log(distances, 'distances');
   for (let i = 0; i < k; i++) {
-    let p = points[distances[i]];
-    if (p.length > 1 && results.length < k) {
-      results.push(p[0]);
-      results.push(p[1]);
-    } else if (results.length < k) {
-      results.push(p[0]);
-    }
+    results.push(distances[i].coord);
   }
   return results;
 }
