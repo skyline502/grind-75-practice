@@ -86,11 +86,15 @@ console.log(threeSum(nums))
 //Example 2:
 
 nums = [0,1,1]
+console.log(threeSum(nums))
+
 //Output: []
 //Explanation: The only possible triplet does not sum up to 0.
 
 //Example 3:
 nums = [0,0,0]
+console.log(threeSum(nums))
+
 //Output: [[0,0,0]]
 //Explanation: The only possible triplet sums up to 0.
 
