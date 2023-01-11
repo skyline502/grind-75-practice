@@ -63,3 +63,48 @@ c.left = d
 c.right = e
 
 console.log(levelOrder(a));
+
+/*
+
+const levelOrder = root => {
+  if(!root) return [];
+
+  const result = [[root.val]];
+  const queue = [[root, 0]];
+
+  while (queue.length) {
+    let [current, level] = queue.shift();
+    //let level = [];
+
+    if (current.left) {
+      queue.push([current.left, level + 1]);
+      if (!result[level + 1]) {
+        result[level + 1] = [current.left.val]
+      } else {
+        result[level + 1].push(current.left.val)
+      }
+      
+    }
+
+    if (current.right) {
+      queue.push([current.right, level+1]);
+
+         if (!result[level + 1]) {
+        result[level + 1] = [current.right.val]
+      } else {
+        result[level + 1].push(current.right.val)
+      }
+    }
+
+    if (level.length > 0) {
+      result.push(level);
+    }
+  }
+
+  return result;
+}
+
+Refactored solution 
+
+*/
+
