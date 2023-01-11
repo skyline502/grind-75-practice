@@ -21,6 +21,8 @@ const levelOrder = root => {
 
   while (queue.length) {
     let current = queue.shift();
+    //failing over half test cases
+    //have to add level to the queue, and increment accordingly
     let level = [];
 
     if (current.left) {
@@ -57,7 +59,7 @@ let e = new Node(7)
 
 a.left = b
 a.right = c
-c.left = d 
+c.left = d
 c.right = e
 
 console.log(levelOrder(a));
