@@ -14,3 +14,9 @@ The input represents a valid arithmetic expression in a reverse polish notation.
 The answer and all the intermediate calculations can be represented in a 32-bit integer.
 
 */
+
+
+//pseudo code
+//use stack 
+//pop off top two numbers when an operator is encountered, do operation 
+//and add to result
