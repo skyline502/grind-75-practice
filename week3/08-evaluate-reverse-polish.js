@@ -57,13 +57,9 @@ var evalRPN = function (tokens) {
 
               if (cur === '/') {
                 console.log('divide');
-                result = eval(num + cur + prev);
-                if (result < 0) {
-                  result = Math.ceil(result);
-                }
-                console.log(result, 'result');
+                result = Math.trunc(eval(prev + cur + num));
               } else {
-                result = eval(num + cur + prev)
+                result = eval(prev + cur + num)
               }
           }
       }
@@ -73,10 +69,34 @@ var evalRPN = function (tokens) {
   return result;
 };
 
-let tokens = ["3","11","+","5","-"];
+let token = ["3","11","+","5","-"];
 
-console.log(evalRPN(tokens)) //9
+console.log(evalRPN(token)) //9
 
-tokens = ["10","6","9","3","+","-11","*","/","*","17","+","5","+"]
+token = ["10","6","9","3","+","-11","*","/","*","17","+","5","+"]
 
-console.log(evalRPN(tokens))//22
+console.log(evalRPN(token))//22
+
+/*
+simple stack solution:
+function evalRPN(tokens) {
+  let stack = [];
+  let ops = {
+    '+': (a, b) => a + b,
+    '-': (a, b) => a - b,
+    '*': (a, b) => a * b,
+    '/': (a, b) => a / b >= 0 ? Math.floor(a / b) : Math.ceil(a / b),
+  };
+  for (let t of tokens) {
+    if (ops[t]) {
+      let top = stack.pop();
+      let second = stack.pop();
+      stack.push(ops[t](second, top));
+    } else {
+      stack.push(Number(t));
+    }
+  }
+  return stack.pop();
+};
+
+*/
