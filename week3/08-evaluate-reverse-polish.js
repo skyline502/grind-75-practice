@@ -17,6 +17,50 @@ The answer and all the intermediate calculations can be represented in a 32-bit 
 
 
 //pseudo code
-//use stack 
-//pop off top two numbers when an operator is encountered, do operation 
+//use stack
+//pop off top two numbers when an operator is encountered, do operation
 //and add to result
+
+var evalRPN = function (tokens) {
+  let result = null;
+  let stack = []
+  let index = 0;
+  let ops = '+-/*'
+
+  if (tokens.length === 1) {
+      return Number(tokens[0]);
+  }
+
+
+
+  while (index < tokens.length) {
+      let cur = tokens[index];
+
+      if (!ops.includes(cur)) {
+          stack.push(cur);
+      } else {
+          if (result === null && cur === '/') {
+              console.log(stack, 'stack')
+              let num2 = stack.pop();
+              let num1 = stack.pop();
+              result = Math.floor(eval(num1 + cur + num2));
+          }
+
+          else if (result === null) {
+              let num2 = stack.pop();
+              let num1 = stack.pop();
+              let op = num1 + cur + num2;
+              result = eval(op)
+              console.log(result, 'result')
+          } else {
+              console.log(result, 'result')
+              let num = stack.pop();
+              let prev = result.toString();
+              result = eval(num + cur + prev)
+          }
+      }
+      index++;
+  }
+
+  return result;
+};
