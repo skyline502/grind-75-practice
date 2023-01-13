@@ -31,8 +31,6 @@ var evalRPN = function (tokens) {
       return Number(tokens[0]);
   }
 
-
-
   while (index < tokens.length) {
       let cur = tokens[index];
 
@@ -56,7 +54,17 @@ var evalRPN = function (tokens) {
               console.log(result, 'result')
               let num = stack.pop();
               let prev = result.toString();
-              result = eval(num + cur + prev)
+
+              if (cur === '/') {
+                console.log('divide');
+                result = eval(num + cur + prev);
+                if (result < 0) {
+                  result = Math.ceil(result);
+                }
+                console.log(result, 'result');
+              } else {
+                result = eval(num + cur + prev)
+              }
           }
       }
       index++;
@@ -64,3 +72,11 @@ var evalRPN = function (tokens) {
 
   return result;
 };
+
+let tokens = ["3","11","+","5","-"];
+
+console.log(evalRPN(tokens)) //9
+
+tokens = ["10","6","9","3","+","-11","*","/","*","17","+","5","+"]
+
+console.log(evalRPN(tokens))//22
