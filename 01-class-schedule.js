@@ -30,3 +30,45 @@ prerequisites[i].length == 2
 All the pairs prerequisites[i] are unique.
 
 */
+
+const canTake = (numCourses, prereqs) => {
+  let taken = new Set()
+  let pre = {}
+  let stack = []
+
+  for (let course of prereqs) {
+    const [c, p] = course
+    //console.log(c, p)
+    if(!pre[c]){
+      pre[Number(c)] = [p]
+    } else {
+      pre[c].push(p)
+    }
+  }
+
+  console.log("pre", pre)
+
+  for (let i = 0; i < numCourses; i++){
+    console.log(taken, i)
+    console.log(pre[i],i)
+    if (i in pre) {
+      if(taken.has(pre[i][0])) {
+        taken.add(i)
+      } else {
+         stack.push(i)
+      }
+     
+    } else {
+      taken.add(i)
+    }
+  }
+
+  return !stack.length
+}
+
+//example
+let numCourses = 2
+let prerequisites = [[1,0]]
+
+console.log(canTake(numCourses, prerequisites))
+
