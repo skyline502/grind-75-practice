@@ -30,3 +30,42 @@ Constraints:
 0 <= amount <= 104
 
 */
+/*
+
+Example 1:
+Input: coins = [1,2,5], amount = 11
+Output: 3
+Explanation: 11 = 5 + 5 + 1
+Example 2:
+Input: coins = [2], amount = 3
+Output: -1
+Example 3:
+Input: coins = [1], amount = 0
+Output: 0
+
+*/
+
+const coinChange = (coins, tar) => {
+  console.log(coins)
+  let count = 0
+  if (tar === 0) return count;
+  coins.sort()
+  while(tar > 0) {
+    console.log(coins)
+    let max = Math.max(...coins)
+    if(max <= tar) {
+      tar -= max
+      count++
+    } else {
+      coins.pop()
+    }
+    console.log(tar, max)
+  }
+  return count
+}
+
+let coins = [1,2,5]
+let tar = 11
+
+console.log(coinChange(coins,tar))
+ 
