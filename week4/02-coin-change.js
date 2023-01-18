@@ -6,7 +6,7 @@ Return the fewest number of coins that you need to make up that amount. If that 
 
 You may assume that you have an infinite number of each kind of coin.
 
- 
+
 
 Example 1:
 
@@ -21,7 +21,7 @@ Example 3:
 
 Input: coins = [1], amount = 0
 Output: 0
- 
+
 
 Constraints:
 
@@ -45,30 +45,27 @@ Output: 0
 
 */
 
-const coinChange = (coins, tar) => {
-  console.log(coins)
-  let count = 0
-  if (tar === 0) return count;
-  coins.sort()
-  while(tar > 0) {
-    console.log(coins)
-    let max = Math.max(...coins)
-    if(max <= tar) {
-      tar -= max
-      count++
-    } else {
-      coins.pop()
+const coinChange = (coins, amount) => {
+  const dp = Array(amount + 1).fill(Infinity); // This arr tells us how many coins we need for each amount.
+  dp[0] = 0; // To make 0, we need 0 coins.
+  console.log(dp)
+  for (let coin of coins) {
+    // Check each coin
+    for (let i = coin; i <= amount; i++) {
+      // Iterate through the entire amount from coin
+      dp[i] = Math.min(dp[i], dp[i - coin] + 1); // Update minimum number of needed coins.
+      console.log(dp[i], 'amount needed', coin, 'coin')
     }
-    if (!coins.length) {
-      return -1
-    }
-    console.log(tar, max)
   }
-  return count
-}
+  return dp[amount] === Infinity ? -1 : dp[amount]; // If the last element is Infinity, then we cannot make the amount.
+};
 
-let coins = [1,2,5]
-let tar = 11
+let coins = [1, 2, 5];
+let tar = 11;
 
-console.log(coinChange(coins,tar))
- 
+// console.log(coinChange(coins,tar))//3
+
+coins = [1, 2, 5, 10];
+tar = 18;
+
+console.log(coinChange(coins, tar)); //4
