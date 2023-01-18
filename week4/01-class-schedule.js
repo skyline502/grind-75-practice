@@ -66,27 +66,27 @@ All the pairs prerequisites[i] are unique.
 // }
 
 //Easy to understand solution
-The first step is to create the adjacency list. Using the values from Example 1,
+// The first step is to create the adjacency list. Using the values from Example 1,
 
-Input: numCourses = 2, prerequisites = [[1,0]]
-The adacency list will look like below, the way to think of it is, in order to take course 1, we need to take course 0, and whatever else might be in the array.
+// Input: numCourses = 2, prerequisites = [[1,0]]
+// The adacency list will look like below, the way to think of it is, in order to take course 1, we need to take course 0, and whatever else might be in the array.
 
-{
-   1: [0]
-}
-So if we had the prerequisites value
+// {
+//    1: [0]
+// }
+// So if we had the prerequisites value
 
-prerequisites = [[4,3], [3, 2], [2,1]]
-The adjacecny list will look like the below
+// prerequisites = [[4,3], [3, 2], [2,1]]
+// The adjacecny list will look like the below
 
-{
-    4: [3],
-	3: [2],
-	2: [1]
-}
-Course 4 depends on 3, 3 depends on 2, 2 depends on 1, and 1 has no prerequisites.
+// {
+//     4: [3],
+// 	3: [2],
+// 	2: [1]
+// }
+// Course 4 depends on 3, 3 depends on 2, 2 depends on 1, and 1 has no prerequisites.
 
-The visited object is used to keep track of which node we are currently at, once we travel through all the children, and see that there is no re-occurance of the current node (a cycle) we can remove the current node from the visited.
+// The visited object is used to keep track of which node we are currently at, once we travel through all the children, and see that there is no re-occurance of the current node (a cycle) we can remove the current node from the visited.
 
 var canFinish = function(numCourses, prerequisites) {
 
@@ -107,19 +107,19 @@ var canFinish = function(numCourses, prerequisites) {
             return false;
         }
         if(preMap[node] !==undefined){
-            if (preMap[node].length === 0){
+            if (preMap[node].length === 0){ //no neighbors
                 return true;
             }
 
-            visited[node] = true;
+            visited[node] = true; //set this node to visited
             for(let val of preMap[node]){
-                if(!dfs(val)){
+                if(!dfs(val)){ //if the return value of each node plugged in returns a false
                     return false
                 }
             }
-            visited[node] = false;
+            visited[node] = false; //set our visited node to false
 
-            preMap[node] = [];
+            preMap[node] = []; //set our prereqs to this course to empty
         }
         return true;
 
@@ -138,4 +138,4 @@ var canFinish = function(numCourses, prerequisites) {
 let numCourses = 2
 let prerequisites = [[1,0]]
 
-console.log(canTake(numCourses, prerequisites))
+console.log(canFinish(numCourses, prerequisites))
