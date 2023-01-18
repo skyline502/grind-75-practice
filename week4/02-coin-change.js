@@ -51,10 +51,10 @@ const coinChange = (coins, amount) => {
   console.log(dp)
   for (let coin of coins) {
     // Check each coin
-    for (let i = coin; i <= amount; i++) {
+    for (let i = coin; i <= amount; i++) { //i is each coin in each array, we update the min amount needed for each index after coin
+      // console.log(dp[i], 'amount needed', coin, 'coin')
       // Iterate through the entire amount from coin
       dp[i] = Math.min(dp[i], dp[i - coin] + 1); // Update minimum number of needed coins.
-      console.log(dp[i], 'amount needed', coin, 'coin')
     }
   }
   return dp[amount] === Infinity ? -1 : dp[amount]; // If the last element is Infinity, then we cannot make the amount.
