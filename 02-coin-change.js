@@ -59,6 +59,9 @@ const coinChange = (coins, tar) => {
     } else {
       coins.pop()
     }
+    if (!coins.length) {
+      return -1
+    }
     console.log(tar, max)
   }
   return count
