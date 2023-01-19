@@ -76,6 +76,8 @@ var productExceptSelf = function(nums) {
     leftMultiplication *=  nums[i];
   }
 
+  console.log(leftArr, 'left')
+
   let rightArr = [];
   let rightMultiplication = 1;
 
@@ -92,9 +94,14 @@ var productExceptSelf = function(nums) {
 let nums = [1,2,3,4]
 
 console.log(productExceptSelf(nums))
+//leftArr = [1, 1, 2, 6]
+//rightArr = [24, 12, 4, 1]
 //Output: [24,12,8,6]
 
 
 nums = [-1,1,0,-3,3]
 console.log(productExceptSelf(nums))
+
+//leftArr = [1, -1, -1, 0, 0]
+//rightArr = [0, 0, -9, 3, 1]
 //Output: [0,0,9,0,0]
