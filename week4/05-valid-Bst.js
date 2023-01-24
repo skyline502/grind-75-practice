@@ -46,6 +46,7 @@ var isValidBST = function(root) {
         
         // Continue to scan left and right
         return helper(root.left, min, root.val) && helper(root.right, root.val, max);
+                     //node, min, max.                     Node, min, max
     }
     
     return helper(root, null, null);
